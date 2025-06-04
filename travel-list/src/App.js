@@ -30,7 +30,7 @@ function App() {
     let percentage = 0;
     percentage = (totalPacked / items.length)*100;
     console.log(percentage)
-    return Math.ceil(percentage)
+    return percentage > 0 ? Math.ceil(percentage): 0
   }
 
   return (
@@ -42,7 +42,7 @@ function App() {
         array={items}
         handleDeleteItem={handleDeleteItem}
       ></PackingList>
-      <Stats total={items.length} percentage={getPercentage} ></Stats>
+      <Stats total={items.length} percentage={getPercentage} totalpacked={items.filter((item)=>item.packed === true).length} ></Stats>
     </div>
   );
 }
